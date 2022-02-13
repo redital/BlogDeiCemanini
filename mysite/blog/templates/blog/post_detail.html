@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="{% static 'css/light_mode.css' %}">
         {% endif %}
         <title>Il blog dei cemanini</title>
+        <link rel="icon" type="image/x-icon" href="\static\LogoBlog.svg">
     </head>
 
     <body>
@@ -37,13 +38,27 @@
 
         <!-- Header -->
 	    <header class="page-header">
-            <h1><a href="/">{{post.title}}</a></h1>
+            <div class="titolone">
+                
+                <div style="float: left;" class="logo">
+                    <a href="/">
+                        <img width="50px" src="\static\LogoBlog.svg" />
+                    </a>
+                </div>
+
+                <div style="float: left;">
+                    <h1>{{post.title}}</a></h1>
+                </div>
+
+                <div style="clear: both;"></div>
+
+            </div>
             <time class="date">
                 {{ post.published_date }}
             </time>
         </header>
 
-        <!-- Testo articolo dioporco -->
+        <!-- Testo articolo -->
         <main>
             <article class="post">
                 <p>{{ post.text|linebreaksbr }}</p>
