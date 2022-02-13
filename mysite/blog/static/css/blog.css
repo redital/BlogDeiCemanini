@@ -49,6 +49,7 @@ h4 {
 
 .date {
     color: #828282;
+    float: right;
 }
 
 .save {
@@ -75,10 +76,13 @@ h4 {
     margin-bottom: 70px;
 }
 
-.post > .date/*,
-.post > .actions*/ {
+/*
+.post > .date,
+.post > .actions {
     float: right;
 }
+*/
+
 .btn-default,
 .btn-default:visited {
     color: #C25100;
