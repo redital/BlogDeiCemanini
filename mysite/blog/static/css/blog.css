@@ -12,8 +12,17 @@ h2 a{
     font-family: 'Impact';
 }
 
+.post img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
 body {
   padding-left: 15px;
+  height: 100%;
+  min-height: 100%;
 }
 
 .page-header {
@@ -40,9 +49,14 @@ body {
 }
 
 footer{
-  padding: 40px;
+  margin-top: 20px;
+  padding: 20px;
   background-color: #5f5f5f;
   text-align: center;
+  position: relative;
+  bottom:0;
+  left: -33px;
+  width:100%;
 }
 
 h3,

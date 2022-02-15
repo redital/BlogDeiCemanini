@@ -42,7 +42,7 @@
                 
                 <div style="float: left;" class="logo">
                     <a href="/">
-                        <img width="50px" src="\static\LogoBlog.svg" />
+                        <img width="80px" src="\static\LogoBlog.svg" />
                     </a>
                 </div>
 
@@ -62,9 +62,21 @@
         <main>
             <article class="post">
                 <p>{{ post.text|linebreaksbr }}</p>
+                {% if post.has_picture %}
+                <img src="{{post.picture.url}}">
+                {% endif %}
             </article>
         </main>
 
         
     </body>
+
+    <footer>
+        <div class="container-fluid">
+            <p style="font-weight:bold">Link utili:</p>
+            <a href="/admin"><span class="glyphicon glyphicon-thumbs-up"></span>Accesso Amministratori</a>
+            <br>
+            <a href="#">Torna Su</a><br>
+        </div>
+    </footer>
 </html>

@@ -10,7 +10,8 @@ from .models import Post
 dark=False
 
 def post_list(request):
-    posts = Post.objects.exclude(published_date = None).order_by('published_date')
+    separatore='/'
+    posts = Post.objects.exclude(published_date = None).order_by('-published_date')
     global dark
     if request.method=='POST':
         if len(request.POST.getlist('dark_theme'))==1:
@@ -21,6 +22,9 @@ def post_list(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
+    post.set_has_picture()
+    print(post)
+    print(post.has_picture)
     global dark
     if request.method=='POST':
         if len(request.POST.getlist('dark_theme'))==1:
