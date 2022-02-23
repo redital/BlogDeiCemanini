@@ -2,6 +2,7 @@
 
 # Create your models here.
 
+from ast import Pass
 from asyncio.windows_events import NULL
 from distutils.command.upload import upload
 from django.conf import settings 
@@ -20,6 +21,9 @@ class Post(models.Model):
      picture = models.ImageField(upload_to='blog/static/post/%pk' ,blank=True, null=True)
      has_picture = False
 
+
+     def aggiungiImmagine():
+         pass
      def publish(self):
          self.published_date = timezone.now()
          self.save()
@@ -33,3 +37,5 @@ class Post(models.Model):
 
      def __str__(self):
          return self.title
+
+

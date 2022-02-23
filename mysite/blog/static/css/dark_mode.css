@@ -1,7 +1,15 @@
 html{
     background-color: #5f5f5f;
 }
-
-footer a{
+.post h2 a{
     color: #FFFFFF;
+}
+.post h2 a:visited{
+    color: #FFFFFF;
+}
+.footer{
+    background-color: #e2e5e5;
+}
+footer a,p{
+    color: #000000;
 }
