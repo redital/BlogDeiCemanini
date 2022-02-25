@@ -70,10 +70,16 @@
             <!-- Testo articolo -->
             <main>
                 <article class="post">
-                    <p>{{ post.text|linebreaksbr }}</p>
-                    {% if post.has_picture %}
-                    <img src="{{post.picture.url}}">
-                    {% endif %}
+                    {% for text,picture in pieces %}  
+                    <p>{{ text }}</p>
+                    {% if post.has_picture %}               
+                    <img src="{{picture.pictures.url}}">
+                    {% endif %}     
+                    {% endfor %}
+
+                    {% for picture in more_pictures %}   
+                    <img src="{{picture.pictures.url}}">
+                    {% endfor %}
                 </article>
             </main>
 

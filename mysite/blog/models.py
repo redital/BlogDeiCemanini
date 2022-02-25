@@ -18,9 +18,7 @@ class Post(models.Model):
      text = models.TextField()
      created_date = models.DateTimeField(default=timezone.now)
      published_date = models.DateTimeField(blank=True, null=True)
-     picture = models.ImageField(upload_to='blog/static/post/%pk' ,blank=True, null=True)
      has_picture = False
-
 
      def aggiungiImmagine():
          pass
@@ -30,8 +28,8 @@ class Post(models.Model):
      def unpublish(self):
          self.published_date = None
          self.save()
-     def set_has_picture(self):
-         val=self.picture != None and str(self.picture) != ""
+     def set_has_picture(self, pictures):
+         val=len(pictures) != 0 
          self.has_picture=val
          self.save()
 
@@ -39,3 +37,8 @@ class Post(models.Model):
          return self.title
 
 
+ 
+class PostImage(models.Model):
+    post = models.ForeignKey(Post, default=None, on_delete=models.CASCADE)
+    pictures = models.ImageField(upload_to='blog/static/post/%pk',blank=True, null=True)
+ 
