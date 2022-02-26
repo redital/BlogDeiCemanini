@@ -7,7 +7,7 @@
 
     {% for picture in more_pictures %}   
         <div class="mySlides fade" style="vertical-align: middle;">
-            <img src="{{picture.pictures.url}}" style="width:100%">
+            <img src="{{picture.pictures.url}}" style="width:calc(100% - 80px)">
         </div>
     {% endfor %}
     
