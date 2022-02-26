@@ -24,23 +24,27 @@ def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     pictures = PostImage.objects.filter(post=post)
     post.set_has_picture(pictures)
-    texts=post.text.split("<img>")
-    pieces=[]
-    print(len(texts))
-    print(len(pictures))
-    for i in range(len(texts)):
-        print(i)
-        pieces.append((texts[i],pictures[i]))
-        print(pieces[i])
-    more_pictures=[]
-    print(len(texts)<len(pictures))
-    if len(texts)<len(pictures):
-        print(range(len(texts),len(pictures)))
-        for i in range(len(texts),len(pictures)):
+    if post.has_picture:
+        texts=post.text.split("<img>")
+        pieces=[]
+        print(len(texts))
+        print(len(pictures))
+        for i in range(len(texts)):
             print(i)
-            more_pictures.append(pictures[i])
-    print(pieces)
-    print(more_pictures)
+            pieces.append((texts[i],pictures[i]))
+            print(pieces[i])
+        more_pictures=[]
+        print(len(texts)<len(pictures))
+        if len(texts)<len(pictures):
+            print(range(len(texts),len(pictures)))
+            for i in range(len(texts),len(pictures)):
+                print(i)
+                more_pictures.append(pictures[i])
+        print(pieces)
+        print(more_pictures)
+    else:
+        pieces=[(post.text,'')]
+        more_pictures=[]
 
     global dark
     if request.method=='POST':
