@@ -7,6 +7,7 @@
         -->
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
         <link rel="stylesheet" href="{% static 'css/switch.css' %}">
+        <link rel="stylesheet" href="{% static 'css/carosello.css' %}">
         {% if dark %}
         <link rel="stylesheet" href="{% static 'css/dark_mode.css' %}">
         {% else %}
@@ -45,7 +46,7 @@
                     <a href="/" style="float: left;" class="logo">
                         <img width="80px" src="\static\LogoBlog.svg" />
                     </a>
-                    <h1 style="float: left;" class="titolopost">{{post.title}}</a></h1>
+                    <h1 style="float: left;" class="titolopost">{{post.title}}</h1>
                     
                     <!-- 
                     <div style="float: left;" class="logo" allign="center">
@@ -77,13 +78,21 @@
                     {% endif %}     
                     {% endfor %}
 
+                    {% if carosello %}
+                    {% block carosello %}{{more_pictures}}{{indici}}{% endblock %}
+                    {% else %}
                     {% for picture in more_pictures %}   
                     <img src="{{picture.pictures.url}}">
                     {% endfor %}
+                    {% endif %}
+
                 </article>
             </main>
 
+
         </div>
+
+        
 
         <footer class="footer">
             <p style="font-weight:bold">Link utili:</p>

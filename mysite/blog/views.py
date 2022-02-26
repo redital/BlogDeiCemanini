@@ -29,15 +29,18 @@ def post_detail(request, pk):
         pieces=[]
         print(len(texts))
         print(len(pictures))
-        for i in range(len(texts)):
+        n_intext_pictures=post.text.count('<img>')
+        print(n_intext_pictures)
+        for i in range(len(texts)-1):
             print(i)
             pieces.append((texts[i],pictures[i]))
             print(pieces[i])
+        pieces.append((texts[-1],''))
         more_pictures=[]
-        print(len(texts)<len(pictures))
-        if len(texts)<len(pictures):
-            print(range(len(texts),len(pictures)))
-            for i in range(len(texts),len(pictures)):
+        print(len(texts)-1<len(pictures))
+        if len(texts)-1<len(pictures):
+            print(range(len(texts)-1,len(pictures)))
+            for i in range(len(texts)-1,len(pictures)):
                 print(i)
                 more_pictures.append(pictures[i])
         print(pieces)
@@ -52,4 +55,8 @@ def post_detail(request, pk):
             dark=True
         else:
             dark=False
-    return render(request, 'blog/post_detail.html', {'post': post, "pieces":pieces, 'more_pictures':more_pictures,'dark':dark})
+    return render(request, 'blog/carosello.html', 
+                    {'post': post, "pieces":pieces, 
+                    'more_pictures':more_pictures,
+                    'dark':dark,'indici':range(len(more_pictures)),
+                    'carosello':len(more_pictures)>1})
